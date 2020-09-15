@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, SafeAreaView, StatusBar} from 'react-native';
+import Form from './src/components/Form/Form';
 import {AppStyles} from './AppStyle';
 
 const App = () => {
@@ -7,7 +8,8 @@ const App = () => {
     <>
       <StatusBar barStyle="light-content" />
       <SafeAreaView style={AppStyles.safeArea}>
-        <Text>Head form</Text>
+        <Text style={AppStyles.titleApp}>Credit Bank Simulator</Text>
+        <Form />
       </SafeAreaView>
 
       <View>

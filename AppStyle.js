@@ -9,4 +9,10 @@ export const AppStyles = StyleSheet.create({
     borderBottomRightRadius: 30,
     alignItems: 'center',
   },
+  titleApp: {
+    fontSize: 25,
+    fontWeight: "bold",
+    color: "#FFF",
+    marginTop: 15,
+  }
 });
