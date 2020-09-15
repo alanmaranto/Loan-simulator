@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, Text, SafeAreaView} from 'react-native';
+import {View, Text, SafeAreaView, StatusBar} from 'react-native';
 import {AppStyles} from './AppStyle';
 
 const App = () => {
   return (
     <>
+      <StatusBar barStyle="light-content" />
       <SafeAreaView style={AppStyles.safeArea}>
         <Text>Head form</Text>
       </SafeAreaView>
