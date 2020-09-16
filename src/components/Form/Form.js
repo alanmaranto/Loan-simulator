@@ -1,8 +1,10 @@
 import React from 'react';
-import {TextInput, View} from 'react-native';
+import {TextInput, View, LogBox} from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import {selectOptions} from './helpers';
 import {formStyle, picketSelectStyle} from './FormStyle';
+
+LogBox.ignoreLogs(['Picker has been extracted'])
 
 const Form = ({setMonths, setAmount, setInteres}) => {
   return (
