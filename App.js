@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, SafeAreaView, StatusBar, Button} from 'react-native';
 import Form from './src/components/Form/Form';
 import Footer from './src/components/Footer/Footer';
@@ -11,6 +11,14 @@ const App = () => {
   const [months, setMonths] = useState(null);
   const [total, setTotal] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    if (amount && interes && months) {
+      onCalculate();
+    } else {
+      resetForm();
+    }
+  }, [amount, interes, months]);
 
   const onCalculate = () => {
     resetForm();
