@@ -4,7 +4,7 @@ import RNPickerSelect from 'react-native-picker-select';
 import {selectOptions} from './helpers';
 import {formStyle, picketSelectStyle} from './FormStyle';
 
-LogBox.ignoreLogs(['Picker has been extracted'])
+LogBox.ignoreLogs(['Picker has been extracted']);
 
 const Form = ({setMonths, setAmount, setInteres}) => {
   return (
@@ -25,6 +25,10 @@ const Form = ({setMonths, setAmount, setInteres}) => {
       </View>
       <RNPickerSelect
         style={picketSelectStyle}
+        placeholder={{
+          label: 'Select the payment terms',
+          value: null,
+        }}
         onValueChange={(value) => setMonths(value)}
         items={selectOptions}
       />

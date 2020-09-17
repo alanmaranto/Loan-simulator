@@ -1,14 +1,39 @@
 import React, {useState} from 'react';
 import {View, Text, SafeAreaView, StatusBar, Button} from 'react-native';
 import Form from './src/components/Form/Form';
+import Footer from './src/components/Footer/Footer';
+import Result from './src/components/Result/Result';
 import {AppStyles} from './AppStyle';
 
 const App = () => {
   const [amount, setAmount] = useState(null);
   const [interes, setInteres] = useState(null);
   const [months, setMonths] = useState(null);
+  const [total, setTotal] = useState(null);
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const onSubmit = () => {};
+  const onCalculate = () => {
+    resetForm();
+    if (!amount) {
+      setErrorMessage('Add the amount you want to request');
+    } else if (!interes) {
+      setErrorMessage('Add interest on the loan');
+    } else if (!months) {
+      setErrorMessage('Select the months to pay');
+    } else {
+      const int = interes / 100;
+      const fee = amount / ((1 - Math.pow(int + 1, -months)) / int);
+      setTotal({
+        monthlyFee: fee.toFixed(2).replace('.', ','),
+        totalPayment: (fee * months).toFixed(2).replace('.', ','),
+      });
+    }
+  };
+
+  const resetForm = () => {
+    setErrorMessage('');
+    setTotal(null);
+  };
 
   return (
     <>
@@ -23,14 +48,15 @@ const App = () => {
         />
       </SafeAreaView>
 
-      <View>
-        <Text>Resultado</Text>
-      </View>
+      <Result
+        errorMessage={errorMessage}
+        amount={amount}
+        interes={interes}
+        months={months}
+        total={total}
+      />
 
-      <View>
-        <Button title="Send" onPress={onSubmit} />
-        <Text>Footer</Text>
-      </View>
+      <Footer onCalculate={onCalculate} />
     </>
   );
 };
